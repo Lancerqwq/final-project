@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 export class HTTPService {
   baseUrl = "https://jsonplaceholder.typicode.com/";
   // baseUrl = "https://run.mocky.io/v3/491c00bb-f427-44c9-b4a4-2cd2ed9f5aad";
@@ -25,7 +26,7 @@ export class HTTPService {
   }
 
   parseResponse(response) {
-    switch (this.response.status) {
+    switch (response.status) {
       case 200: {
         return response.json();
       }
