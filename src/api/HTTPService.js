@@ -1,41 +1,34 @@
-/* eslint-disable class-methods-use-this */
 export class HTTPService {
-  baseUrl = "https://jsonplaceholder.typicode.com/";
-  // baseUrl = "https://run.mocky.io/v3/491c00bb-f427-44c9-b4a4-2cd2ed9f5aad";
-
-  request({ path, ...params }) {
-    const url = path ? this.baseUrl + path : this.baseUrl;
+  static request({ path, ...params }) {
+    const baseUrl = "https://jsonplaceholder.typicode.com/";
+    const url = path ? baseUrl + path : baseUrl;
     return fetch(url, params).then((res) => {
       return this.parseResponse(res);
     });
   }
 
-  getRequest(path, params = {}) {
+  static getRequest(path, params = {}) {
     return this.request({ method: "GET", path, ...params });
   }
 
-  postRequest(path, body) {
+  static postRequest(path, body) {
     return this.request({
       path,
       method: "POST",
       headers: {
-        "Content-Type": "multipart/form-data",
+        "Content-Type": "application/json; charset=UTF-8",
       },
       body: JSON.stringify(body),
     });
   }
 
-  parseResponse(response) {
-    switch (response.status) {
-      case 200: {
-        return response.json();
-      }
-      case 401: {
-        return "Error";
-      }
-      default: {
-        return Promise.reject(response.json());
-      }
+  static parseResponse(response) {
+    if (response.ok) {
+      return response.json();
     }
+    if (response.status === 401) {
+      return "redirect";
+    }
+    return Promise.reject(response.json());
   }
 }
