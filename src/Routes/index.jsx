@@ -1,10 +1,10 @@
 import React from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
-import RecipeReviewCard from "../Books/BooksList";
-import CardPage from "../Card";
-import ContactsPage from "../Contacts";
-import LoginPage from "../Login";
-import ErrorPage from "../NotFoundPage";
+import RecipeReviewCard from "./BooksPage/BooksList";
+import CardPage from "./CardPage";
+import ContactsPage from "./ContactsPage";
+import LoginPage from "./LoginPage";
+import ErrorPage from "./NotFoundPage";
 
 function Routes() {
   return (

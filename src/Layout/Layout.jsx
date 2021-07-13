@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
-import MyAppBar from "../Components/Header/index";
-import MyFooterBar from "../Components/Footer/index";
+import MyAppBar from "./Components/Header/index";
+import MyFooterBar from "./Components/Footer/index";
 
 const useStyles = makeStyles({
   root: {
