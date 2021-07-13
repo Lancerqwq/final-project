@@ -14,7 +14,7 @@ import ShareIcon from "@material-ui/icons/Share";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { HTTPService } from "../../../api/HTTPService";
 import { useStyles } from "./styles";
-import SimpleSlider from "../../../Components/Carousel";
+import SimpleSlider from "../Carousel";
 
 function RecipeReviewCard() {
   const classes = useStyles();
