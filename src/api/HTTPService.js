@@ -1,6 +1,6 @@
 export class HTTPService {
   static request({ path, ...params }) {
-    const baseUrl = "https://jsonplaceholder.typicode.com/";
+    const baseUrl = "http://localhost:3100/";
     const url = path ? baseUrl + path : baseUrl;
     return fetch(url, params).then((res) => {
       return this.parseResponse(res);
