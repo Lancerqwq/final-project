@@ -1,51 +1,29 @@
 import React from "react";
 import { AppBar, Toolbar } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
 import { Link, NavLink } from "react-router-dom";
-
-const useStyles = makeStyles({
-  root: {
-    position: "static",
-    display: "flex",
-    alignContent: "center",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-  logo: {
-    fontSize: 20,
-    fontWeight: "bold",
-    color: "inherit",
-    textDecorationLine: "none",
-  },
-  wrap: {
-    justifyContent: "flex-end",
-    gap: 10,
-  },
-  link: {
-    fontSize: 18,
-    color: "white",
-    textDecoration: "none",
-    "&:hover": {
-      textDecoration: "underline",
-    },
-  },
-  selected: {
-    fontWeight: "bold",
-    color: "#ff4d40",
-  },
-});
+import { useSelector } from "react-redux";
+import { useStyles } from "./styles";
 
 function MyAppBar() {
   const classes = useStyles();
+  const cart = useSelector((state) => state.cart);
+
   return (
     <AppBar className={classes.root}>
       <Toolbar>
-        <Link className={classes.logo} to="/book">
+        <Link className={classes.logo} to="/books">
           BookShop
         </Link>
       </Toolbar>
       <Toolbar className={classes.wrap}>
+        <NavLink
+          className={classes.link}
+          activeClassName={classes.selected}
+          exact
+          to="/books"
+        >
+          Home
+        </NavLink>
         <NavLink
           className={classes.link}
           activeClassName={classes.selected}
@@ -60,7 +38,7 @@ function MyAppBar() {
           exact
           to="/cart"
         >
-          Cart
+          {cart.length > 0 ? `Cart (${cart.length})` : "Cart"}
         </NavLink>
         <NavLink
           className={classes.link}
