@@ -7,8 +7,10 @@ const mapBooks = (books, id, item) => {
 };
 
 const initialState = {
+  booksResponse: [],
   books: [],
   cart: [],
+  checkedBooks: [],
 };
 
 const books = (state = initialState, action) => {
@@ -18,6 +20,7 @@ const books = (state = initialState, action) => {
       return {
         ...state,
         books: [...state.books, ...updatedBooks],
+        booksResponse: [...state.booksResponse, ...updatedBooks],
       };
     }
     case actionTypes.ADD_BOOK: {
@@ -63,6 +66,25 @@ const books = (state = initialState, action) => {
         ...state,
         books: [...mapBooks(state.books, id, addedBook)],
         cart: [...mapBooks(state.cart, id, addedBook)],
+      };
+    }
+    case actionTypes.CHECKOUT: {
+      const booksIds = state.cart.map((cartItem) => ({
+        id: cartItem.id,
+        amount: cartItem.amount,
+      }));
+
+      return {
+        ...state,
+        checkedBooks: [...booksIds],
+      };
+    }
+    case actionTypes.CLEAR_BOOKS: {
+      return {
+        ...state,
+        cart: [],
+        checkedBooks: [],
+        books: state.booksResponse,
       };
     }
     default:

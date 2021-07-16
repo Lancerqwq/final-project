@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Card,
@@ -10,7 +11,12 @@ import {
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
 import DeleteIcon from "@material-ui/icons/Delete";
-import { removeBook, plusAmount, minusAmount } from "../../Redux/actions";
+import {
+  removeBook,
+  plusAmount,
+  minusAmount,
+  checkoutOrder,
+} from "../../Redux/actions";
 import { useStyles } from "./styles";
 
 function CardPage() {
@@ -18,18 +24,9 @@ function CardPage() {
 
   const dispatch = useDispatch();
   const classes = useStyles();
-  const [ids, setIds] = useState(null); // will used to postRequest in next task
 
   const handleRemoveBook = (id) => {
     dispatch(removeBook(id));
-  };
-
-  const checkout = (books) => {
-    const booksIds = books.map((book) => ({
-      id: book.id,
-      amount: book.amount,
-    }));
-    setIds(booksIds);
   };
 
   return (
@@ -88,9 +85,11 @@ function CardPage() {
         className={classes.btn}
         variant="contained"
         color="primary"
-        onClick={() => checkout(cart)}
+        onClick={() => dispatch(checkoutOrder())}
       >
-        Checkout
+        <Link className={classes.link} to="/cart/checkout">
+          Checkout
+        </Link>
       </Button>
     </div>
   );

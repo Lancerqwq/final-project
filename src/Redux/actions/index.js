@@ -28,3 +28,7 @@ export const minusAmount = (id) => ({
 export const checkoutOrder = () => ({
   type: actionTypes.CHECKOUT,
 });
+
+export const clearBooks = () => ({
+  type: actionTypes.CLEAR_BOOKS,
+});

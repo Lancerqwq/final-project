@@ -27,6 +27,7 @@ export const useStyles = makeStyles({
   btn: {
     width: 200,
     margin: "20px auto 0px",
+    backgroundColor: "#3f51b5",
   },
   amountWrap: {
     display: "flex",
@@ -38,5 +39,10 @@ export const useStyles = makeStyles({
     margin: 0,
     padding: 10,
     textAlign: "center",
+  },
+  link: {
+    width: "100%",
+    color: "white",
+    textDecoration: "none",
   },
 });

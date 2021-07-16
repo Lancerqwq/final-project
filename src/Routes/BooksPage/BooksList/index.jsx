@@ -79,7 +79,6 @@ function RecipeReviewCard() {
                 <IconButton
                   aria-label="add to basket"
                   onClick={() => handleAddBook(item.id)}
-                  // color={item.isAdded ? "secondary" : "primary"}
                   disabled={item.isAdded}
                 >
                   <AddShoppingCartIcon />
