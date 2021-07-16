@@ -1,0 +1,11 @@
+const actionTypes = {
+  FETCH_BOOKS: "FETCH_BOOKS",
+  ADD_BOOK: "ADD_BOOK",
+  REMOVE_BOOK: "REMOVE_BOOK",
+  INCREMENT: "INCREMENT",
+  DECREMENT: "DECREMENT",
+  CHECKOUT: "CHECKOUT",
+  CLEAR_BOOKS: "CLEAR_BOOKS",
+};
+
+export default actionTypes;
